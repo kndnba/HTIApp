@@ -1,6 +1,6 @@
 package com.bignerdranch.android.htiapp.di
 
-import com.bignerdranch.android.htiapp.Interface.RetrofitServices
+import com.bignerdranch.android.htiapp.network.RetrofitServices
 import com.bignerdranch.android.htiapp.network.NetworkRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

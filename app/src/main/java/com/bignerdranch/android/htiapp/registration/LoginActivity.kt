@@ -1,4 +1,4 @@
-package com.bignerdranch.android.htiapp.activities
+package com.bignerdranch.android.htiapp.registration
 
 import android.content.Intent
 import android.os.Bundle

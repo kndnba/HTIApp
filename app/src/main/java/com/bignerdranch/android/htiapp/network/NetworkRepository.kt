@@ -1,10 +1,16 @@
 package com.bignerdranch.android.htiapp.network
 
-import com.bignerdranch.android.htiapp.Interface.RetrofitServices
+import io.reactivex.Single
 import javax.inject.Inject
 
 class NetworkRepository @Inject constructor(
-    val api: RetrofitServices
+    private val api: RetrofitServices
 ) {
+
+    fun register(phone: String): Single<Response> = api.register(
+        hashMapOf(
+            "phone" to phone
+        )
+    )
 
 }

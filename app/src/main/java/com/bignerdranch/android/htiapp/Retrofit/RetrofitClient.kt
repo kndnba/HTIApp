@@ -1,7 +1,6 @@
 package com.bignerdranch.android.htiapp.Retrofit
 
-import com.bignerdranch.android.htiapp.Interface.RetrofitServices
-import okhttp3.Interceptor
+import com.bignerdranch.android.htiapp.network.RetrofitServices
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

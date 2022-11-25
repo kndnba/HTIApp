@@ -5,8 +5,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bignerdranch.android.htiapp.common.APP_PREFERENCES_PHONE_NUMBER
-import com.bignerdranch.android.htiapp.databinding.ActivityRegisterBinding
 import com.bignerdranch.android.htiapp.databinding.ActivitySplashScreenBinding
+import com.bignerdranch.android.htiapp.registration.RegisterActivity
 import com.bignerdranch.android.htiapp.utils.getSharedPrefs
 
 @SuppressLint("CustomSplashScreen")

@@ -1,13 +1,10 @@
-package com.bignerdranch.android.htiapp.Interface
+package com.bignerdranch.android.htiapp.network
 
-import com.bignerdranch.android.htiapp.Model.RequestModel
-import okhttp3.Response
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-
-
 
 interface RetrofitServices {
 
@@ -15,7 +12,7 @@ interface RetrofitServices {
     fun ping(): Call<String>
 
     @POST("/register")
-    fun register(@Body params: HashMap<String, String>): Call<String>
+    fun register(@Body params: HashMap<String, String>): Single<Response>
 
     @POST("/login")
     fun login(): Call<String>
