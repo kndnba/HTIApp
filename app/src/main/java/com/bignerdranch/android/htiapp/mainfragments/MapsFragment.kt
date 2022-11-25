@@ -68,7 +68,6 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-
     }
 
     override fun onPoiClick(p0: PointOfInterest) {
