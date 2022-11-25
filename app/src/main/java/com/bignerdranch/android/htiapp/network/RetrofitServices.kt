@@ -24,7 +24,7 @@ interface RetrofitServices {
     fun checkCode(@Body params: HashMap<String, String>): Single<Response>
 
     @GET("/getmarkers")
-    fun getMarkers(): Single<MarkersResponse>
+    fun getMarkers(): Single<List<Marker>>
 
     @POST("/addmarker")
     fun addMarker(@Body marker: Marker): Single<Response>

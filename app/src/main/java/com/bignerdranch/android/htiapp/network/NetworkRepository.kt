@@ -1,5 +1,7 @@
 package com.bignerdranch.android.htiapp.network
 
+import com.bignerdranch.android.htiapp.network.entities.Marker
+import com.bignerdranch.android.htiapp.network.entities.MarkersResponse
 import com.bignerdranch.android.htiapp.network.entities.Response
 import io.reactivex.Single
 import javax.inject.Inject
@@ -19,4 +21,6 @@ class NetworkRepository @Inject constructor(
             "code" to code
         )
     )
+
+    fun getMarkers(): Single<List<Marker>> = api.getMarkers()
 }

@@ -7,7 +7,9 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.bignerdranch.android.htiapp.R
 import com.bignerdranch.android.htiapp.databinding.ActivityMapsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MapsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMapsBinding
