@@ -15,10 +15,10 @@ interface RetrofitServices {
     fun register(@Body params: HashMap<String, String>): Single<Response>
 
     @POST("/login")
-    fun login(): Call<String>
+    fun login(@Body params: HashMap<String, String>): Single<String>
 
     @POST("/authcode")
-    fun checkCode(@Body params: HashMap<String, String>): Call<String>
+    fun checkCode(@Body params: HashMap<String, String>): Single<Response>
 }
 
 

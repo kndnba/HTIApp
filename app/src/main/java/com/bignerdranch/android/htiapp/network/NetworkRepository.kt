@@ -13,4 +13,9 @@ class NetworkRepository @Inject constructor(
         )
     )
 
+    fun authCode(code: String): Single<Response> = api.checkCode(
+        hashMapOf(
+            "code" to code
+        )
+    )
 }

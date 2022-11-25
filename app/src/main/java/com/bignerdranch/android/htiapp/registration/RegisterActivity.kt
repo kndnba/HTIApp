@@ -1,26 +1,19 @@
 package com.bignerdranch.android.htiapp.registration
 
-import android.annotation.SuppressLint
-import android.app.Dialog
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.DialogCompat
-import androidx.fragment.app.DialogFragment
-import com.bignerdranch.android.htiapp.Model.RequestModel
 import com.bignerdranch.android.htiapp.activities.MapsActivity
+import com.bignerdranch.android.htiapp.common.APP_PREFERENCES_PHONE_NUMBER
 import com.bignerdranch.android.htiapp.databinding.ActivityRegisterBinding
 import com.bignerdranch.android.htiapp.network.NetworkRepository
+import com.bignerdranch.android.htiapp.utils.getSharedPrefs
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -43,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         mBinding.submitCode.setOnClickListener {
-            authorisation()
+            authorization()
         }
 
         mBinding.alreadyRegisteredLetsLogin.setOnClickListener {
@@ -70,15 +63,12 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun doOnSuccess() {
-        mBinding.enterPhoneNumber.visibility = View.GONE
-        mBinding.enterCode.visibility = View.VISIBLE
-        mBinding.register.visibility = View.GONE
-        mBinding.registerTextEnterCode.visibility = View.VISIBLE
-        mBinding.submitCode.visibility = View.VISIBLE
+        mBinding.registerLayout.visibility = View.GONE
+        mBinding.codeLayout.visibility = View.VISIBLE
     }
 
     private fun doOnError() {
-
+        Toast.makeText(this, "Internet issues", Toast.LENGTH_LONG).show()
     }
 
     private fun showLoader(show: Boolean) {
@@ -89,25 +79,34 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun authorisation() {
-        val requestModel = RequestModel(mBinding.enterCode.text.toString())
-        val params = hashMapOf(
-            "authcode" to mBinding.enterCode.text.toString()
+    private fun authorization() {
+        val code = mBinding.enterCode.text.trim().toString()
+
+        compositeDisposable.add(networkRepository.authCode(code)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { showLoader(true) }
+            .doFinally { showLoader(false) }
+            .subscribe({
+                doOnSuccessAuthCode()
+            }, {
+                doOnError()
+            })
         )
-//        retrofitClient.register(params).enqueue(object : Callback<String>{
-//            override fun onResponse(call: Call<String>, response: Response<String>) {
-//                if(response.isSuccessful) {
-//                    sharedPreferences = getPreferences(MODE_PRIVATE)
-//                    var mEditor : SharedPreferences.Editor = sharedPreferences.edit()
-//                    mEditor.putBoolean("success", response.isSuccessful)
-//                    val intent = Intent(this@RegisterActivity, MapsActivity::class.java)
-//                    startActivity(intent)
-//                }
-//            }
-//            override fun onFailure(call: Call<String>, t: Throwable) {
-//                println("FAIL")
-//            }
-//        })
+    }
+
+    private fun doOnSuccessAuthCode() {
+        saveCredentials()
+
+        val intent = Intent(this, MapsActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun saveCredentials() {
+        val prefs = applicationContext.getSharedPrefs()
+        prefs.edit()
+            .putString(APP_PREFERENCES_PHONE_NUMBER, "NO_PHONE_JUST_MOCK")
+            .apply()
     }
 
     override fun onDestroy() {
