@@ -15,13 +15,13 @@ interface RetrofitServices {
     fun ping(): Call<String>
 
     @POST("/register")
-    fun register(@Body requestModel: RequestModel): Call<String>
+    fun register(@Body params: HashMap<String, String>): Call<String>
 
     @POST("/login")
     fun login(): Call<String>
 
     @POST("/authcode")
-    fun checkCode(): Call<String>
+    fun checkCode(@Body params: HashMap<String, String>): Call<String>
 }
 
 

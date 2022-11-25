@@ -95,12 +95,9 @@
         app:layout_constraintVertical_bias="0.3" />
 
     <TextView
-        android:id="@+id/register_invite"
+        android:id="@+id/lets_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autoLink="all"
-        android:clickable="true"
-        android:focusable="true"
         android:fontFamily="@font/display_light"
         android:linksClickable="true"
         android:text="@string/register_invite"

@@ -4,57 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#1E293B"
     tools:context=".activities.RegisterActivity">
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/register"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="25dp"
         android:layout_height="60dp"
         android:layout_gravity="start"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginHorizontal="25dp"
         android:background="@drawable/button"
-        android:enabled="true"
+        android:fontFamily="@font/inter_regular"
         android:text="@string/register"
-        android:fontFamily="@font/display_heavy"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="0.632" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_phone_number"
+        app:layout_constraintVertical_bias="0.423" />
 
     <Button
         android:id="@+id/submit_code"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="25dp"
         android:layout_height="60dp"
         android:layout_gravity="start"
+        android:layout_marginHorizontal="25dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="64dp"
         android:background="@drawable/button"
         android:enabled="true"
-        android:text="@string/submit_code"
         android:fontFamily="@font/display_heavy"
+        android:text="@string/submit_code"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/enter_phone_number"
         app:layout_constraintVertical_bias="0.632" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/enter_phone_number"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="234dp"
         android:background="@drawable/textfield"
-        android:fontFamily="@font/display_light"
+        android:backgroundTint="#334155"
+        android:fontFamily="@font/inter_regular"
         android:hint="@string/phone_number"
-        android:selectAllOnFocus="true"
         android:maxLines="1"
+        android:selectAllOnFocus="true"
+        android:textColorHint="#94A3B8"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -64,39 +68,62 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="234dp"
         android:background="@drawable/textfield"
-        android:fontFamily="@font/display_light"
+        android:backgroundTint="#334155"
+        android:fontFamily="@font/inter_regular"
         android:hint="@string/enter_code"
-        android:visibility="gone"
+        android:maxLines="1"
         android:selectAllOnFocus="true"
+        android:textColorHint="#94A3B8"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/register_text_enter_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/register_text_enter_code"
-        android:textSize="@dimen/small_text"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:gravity="center"
+        android:text="@string/register_text_enter_code"
+        android:textSize="@dimen/small_text"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/enter_phone_number" />
+
     <TextView
-        android:id="@+id/already_registered"
+        android:id="@+id/already_registered_lets_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/display_light"
         android:text="@string/already_registered"
+        android:textColor="#F1F5F9"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="0.788" />
+        app:layout_constraintTop_toBottomOf="@+id/enter_phone_number"
+        app:layout_constraintVertical_bias="0.878" />
+
+    <TextView
+        android:id="@+id/register_sign"
+        android:layout_width="220dp"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="142dp"
+        android:fontFamily="@font/ruberoid_bold"
+        android:text="@string/register_sign"
+        android:textColor="#F1F5F9"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/enter_phone_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

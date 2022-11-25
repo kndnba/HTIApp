@@ -12,19 +12,19 @@
     <string name="login_failed">"Login failed"</string>
     <string name="login">Login</string>
     <string name="full_name">ㅤFull name</string>
-    <string name="phone_number">ㅤEnter phone number</string>
-    <string name="register">Register</string>
+    <string name="phone_number">ㅤВведите номер телефона</string>
+    <string name="register">Продолжить</string>
     <string name="confirm_password">ㅤConfirm password</string>
-    <string name="remember_password">Remember password</string>
-    <string name="register_invite">Don\'t have an account? Let\'s register</string>
+    <string name="remember_password">Запомнить пароль</string>
+    <string name="register_invite">Ещё нет аккаунта? Авторизуйтесь</string>
     <string name="agree">I agree with terms and conditions</string>
-    <string name="already_registered">Already registered? Let\'s login!</string>
+    <string name="already_registered">Уже зарегистрированы? Авторизуйтесь!</string>
     <color name="blue">#0000FF</color>
     <string name="prompt_password">Password</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="enter_code">Enter code</string>
+    <string name="enter_code">ㅤВведите код</string>
     <string name="submit_code">Submit code</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="register_text_enter_code">Мы отправили SMS с кодом проверки на Ваш телефон</string>
+    <string name="register_sign">Регистрация</string>
 </resources>
