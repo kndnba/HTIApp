@@ -3,14 +3,14 @@
     <string name="onboarding_screen">Onboarding screen</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">ㅤEnter e-mail</string>
-    <string name="prompt_code">ㅤEnter code</string>
+    <string name="prompt_code">ㅤВведите код</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="login">Login</string>
+    <string name="login">Продолжить</string>
     <string name="full_name">ㅤFull name</string>
     <string name="phone_number">ㅤВведите номер телефона</string>
     <string name="register">Продолжить</string>
@@ -27,4 +27,8 @@
     <string name="title_activity_maps">MapsActivity</string>
     <string name="register_text_enter_code">Мы отправили SMS с кодом проверки на Ваш телефон</string>
     <string name="register_sign">Регистрация</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

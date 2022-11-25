@@ -22,8 +22,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityRegisterBinding
     private lateinit var retrofitClient: RetrofitServices
-    private lateinit var mToolbar: Toolbar
-
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,10 +85,11 @@ class RegisterActivity : AppCompatActivity() {
         retrofitClient.register(params).enqueue(object : Callback<String>{
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if(response.isSuccessful) {
+                    sharedPreferences = getPreferences(MODE_PRIVATE)
+                    var mEditor : SharedPreferences.Editor = sharedPreferences.edit()
+                    mEditor.putBoolean("success", response.isSuccessful)
                     val intent = Intent(this@RegisterActivity, MapsActivity::class.java)
                     startActivity(intent)
-                } else {
-                    Toast.makeText(this@RegisterActivity, "Чето не то", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<String>, t: Throwable) {
