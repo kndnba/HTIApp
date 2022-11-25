@@ -11,7 +11,6 @@ import com.bignerdranch.android.htiapp.utils.getSharedPrefs
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityRegisterBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             Intent(this, RegisterActivity::class.java)
         }
-
         startActivity(intent)
     }
 
