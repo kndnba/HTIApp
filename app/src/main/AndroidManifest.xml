@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.bignerdranch.android.htiapp" >
+    package="com.bignerdranch.android.htiapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HTIApp"
-        tools:targetApi="31" >
+        tools:targetApi="31">
 
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -34,8 +34,7 @@
         <activity
             android:name=".activities.MapsActivity"
             android:exported="true"
-            android:label="@string/title_activity_maps" >
-        </activity>
+            android:label="@string/title_activity_maps"/>
         <activity
             android:name=".activities.RegisterActivity"
             android:exported="true" />
@@ -44,13 +43,23 @@
             android:exported="true" />
         <activity
             android:name=".activities.MainActivity"
-            android:exported="true" >
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".activities.SplashScreen"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
