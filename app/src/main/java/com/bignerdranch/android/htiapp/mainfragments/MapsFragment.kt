@@ -1,4 +1,4 @@
-package com.bignerdranch.android.htiapp.activities
+package com.bignerdranch.android.htiapp.mainfragments
 
 import androidx.fragment.app.Fragment
 

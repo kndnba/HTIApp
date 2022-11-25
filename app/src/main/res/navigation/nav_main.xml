@@ -7,29 +7,29 @@
 
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="com.bignerdranch.android.htiapp.activities.MapsFragment"
+        android:name="com.bignerdranch.android.htiapp.mainfragments.MapsFragment"
         android:label="fragment_first"
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.bignerdranch.android.htiapp.HistoryFragment"
+        android:name="com.bignerdranch.android.htiapp.mainfragments.HistoryFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_maps" />
     <fragment
         android:id="@+id/eqGuideFragment"
-        android:name="com.bignerdranch.android.htiapp.eqGuideFragment"
+        android:name="com.bignerdranch.android.htiapp.mainfragments.eqGuideFragment"
         android:label="fragment_third"
         tools:layout="@layout/fragment_eqguide" />
 
     <fragment
         android:id="@+id/achievementsFragment"
-        android:name="com.bignerdranch.android.htiapp.AchievementsFragment"
+        android:name="com.bignerdranch.android.htiapp.mainfragments.AchievementsFragment"
         android:label="fragment_third"
         tools:layout="@layout/fragment_achievements" />
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.bignerdranch.android.htiapp.ProfileFragment"
+        android:name="com.bignerdranch.android.htiapp.mainfragments.ProfileFragment"
         android:label="fragment_third"
         tools:layout="@layout/fragment_profile" />
 
