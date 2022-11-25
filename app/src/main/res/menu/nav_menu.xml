@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/mapsFragment"
-        android:icon="@drawable/marker"
+        android:icon="@drawable/ic_marker"
         android:iconTint="#FFFFFF"
         android:title="Карта"/>
 

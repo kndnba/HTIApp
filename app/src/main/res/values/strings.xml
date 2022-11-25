@@ -31,4 +31,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="my_achievements">Мои достижения</string>
+    <string name="add_avatar">Добавить аватарку</string>
+    <string name="level">2 уровень</string>
 </resources>
