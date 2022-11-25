@@ -1,5 +1,8 @@
 package com.bignerdranch.android.htiapp.network
 
+import com.bignerdranch.android.htiapp.network.entities.Marker
+import com.bignerdranch.android.htiapp.network.entities.MarkersResponse
+import com.bignerdranch.android.htiapp.network.entities.Response
 import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.Body
@@ -19,6 +22,12 @@ interface RetrofitServices {
 
     @POST("/authcode")
     fun checkCode(@Body params: HashMap<String, String>): Single<Response>
+
+    @GET("/getmarkers")
+    fun getMarkers(): Single<MarkersResponse>
+
+    @POST("/addmarker")
+    fun addMarker(@Body marker: Marker): Single<Response>
 }
 
 

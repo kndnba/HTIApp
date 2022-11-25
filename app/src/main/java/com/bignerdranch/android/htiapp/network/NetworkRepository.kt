@@ -1,5 +1,6 @@
 package com.bignerdranch.android.htiapp.network
 
+import com.bignerdranch.android.htiapp.network.entities.Response
 import io.reactivex.Single
 import javax.inject.Inject
 
