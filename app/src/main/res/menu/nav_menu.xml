@@ -3,28 +3,33 @@
 
 
     <item
-    android:id="@+id/mapsFragment"
-    android:icon="@drawable/marker"
-    android:title="Карта"/>
+        android:id="@+id/mapsFragment"
+        android:icon="@drawable/marker"
+        android:iconTint="#FFFFFF"
+        android:title="Карта"/>
 
     <item
         android:id="@+id/historyFragment"
         android:icon="@drawable/history"
+        android:iconTint="#FFFFFF"
         android:title="История"/>
 
     <item
         android:id="@+id/eqGuideFragment"
         android:icon="@drawable/ic_iconnn"
+        android:iconTint="#FFFFFF"
         android:title="EQГИД"/>
 
     <item
         android:id="@+id/achievementsFragment"
         android:icon="@drawable/ic_achievement"
+        android:iconTint="#FFFFFF"
         android:title="Достижения"/>
 
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_profile"
+        android:iconTint="#FFFFFF"
         android:title="Профиль"/>
 
 </menu>
