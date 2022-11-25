@@ -11,6 +11,7 @@ import com.bignerdranch.android.htiapp.R
 import com.bignerdranch.android.htiapp.network.NetworkRepository
 import com.bignerdranch.android.htiapp.network.entities.Marker
 import com.bignerdranch.android.htiapp.network.entities.MarkersResponse
+import com.bignerdranch.android.htiapp.utils.BitmapUtil
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -41,7 +42,8 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
 
         googleMap.addMarker(MarkerOptions()
             .position(yakutsk).title("Marker in Yakutsk")
-            .snippet("It's cold!"))
+            .snippet("It's cold!")
+            .icon(BitmapUtil.bitmapDestructorFromDrawable(requireContext(), R.drawable.marker)))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(yakutsk))
         googleMap.setMinZoomPreference(12.0F)
         googleMap.setOnPoiClickListener(this@MapsFragment)
@@ -97,15 +99,20 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
 
     private fun showMarkers(markers: List<Marker>) {
         if (markers.isNotEmpty()) {
-            map?.let { googleMap ->
+            map?.let {
                 for (marker in markers) {
                     val latitude = marker.xCoordinate?.toDouble() ?: 0.0
                     val longitude = marker.yCoordinate?.toDouble() ?: 0.0
                     val position = LatLng(latitude, longitude)
                     val options = MarkerOptions().apply { this.position(position) }
-                    googleMap.addMarker(options)
+                    addMarker(options)
                 }
             }
         }
+    }
+
+    private fun addMarker(markerOptions: MarkerOptions) {
+        markerOptions.icon(BitmapUtil.bitmapDestructorFromDrawable(requireContext(), R.drawable.marker))
+        map?.addMarker(markerOptions)
     }
 }
