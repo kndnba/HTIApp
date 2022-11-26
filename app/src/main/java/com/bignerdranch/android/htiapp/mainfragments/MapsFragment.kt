@@ -12,6 +12,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.bignerdranch.android.htiapp.R
 import com.bignerdranch.android.htiapp.activities.CommentActivity
+import com.bignerdranch.android.htiapp.common.ARG_BUNDLE
+import com.bignerdranch.android.htiapp.common.ARG_LATITUDE
 import com.bignerdranch.android.htiapp.databinding.FragmentMapsBinding
 import com.bignerdranch.android.htiapp.network.NetworkRepository
 import com.bignerdranch.android.htiapp.network.entities.Marker
@@ -74,6 +76,9 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
         )
         binding.addCommentButton.setOnClickListener {
             val intent = Intent(requireContext(), CommentActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString(ARG_LATITUDE, marker.position.latitude.toString())
+            intent.putExtra(ARG_BUNDLE, bundle)
             startActivity(intent)
         }
         return true
@@ -157,6 +162,7 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
                 for (marker in markers) {
                     val latitude = marker.xCoordinate?.toDouble() ?: 0.0
                     val longitude = marker.yCoordinate?.toDouble() ?: 0.0
+
                     val position = LatLng(latitude, longitude)
                     val options = MarkerOptions().apply {
                         this.position(position)

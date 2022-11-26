@@ -28,6 +28,9 @@ interface RetrofitServices {
 
     @POST("/addmarker")
     fun addMarker(@Body marker: Marker): Single<Response>
+
+    @POST("/addcomment")
+    fun addComment(@Body marker: Marker): Single<Response>
 }
 
 

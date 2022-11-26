@@ -31,4 +31,6 @@ class NetworkRepository @Inject constructor(
             yCoordinate = googleMarker.position.longitude.toString()
         )
     )
+
+    fun addComment(marker: Marker): Single<Response> = api.addComment(marker)
 }
