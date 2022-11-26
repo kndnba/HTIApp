@@ -1,5 +1,6 @@
 package com.bignerdranch.android.htiapp.registration
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -88,7 +89,11 @@ class RegisterActivity : AppCompatActivity() {
             .doOnSubscribe { showLoader(true) }
             .doFinally { showLoader(false) }
             .subscribe({
-                doOnSuccessAuthCode()
+                if (it.status == "ok") {
+                    doOnSuccessAuthCode()
+                } else {
+                    doOnErrorAuthCode()
+                }
             }, {
                 doOnError()
             })
@@ -100,6 +105,15 @@ class RegisterActivity : AppCompatActivity() {
 
         val intent = Intent(this, MapsActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun doOnErrorAuthCode() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("Ошибка кода")
+            .setMessage("Код неверный")
+            .setPositiveButton("ok") { dialog, _ -> dialog.cancel() }
+            .create()
+            .show()
     }
 
     private fun saveCredentials() {
