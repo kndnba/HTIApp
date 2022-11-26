@@ -2,6 +2,7 @@ package com.bignerdranch.android.htiapp.mainfragments
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -10,12 +11,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.bignerdranch.android.htiapp.R
+import com.bignerdranch.android.htiapp.activities.CommentActivity
+import com.bignerdranch.android.htiapp.databinding.FragmentMapsBinding
 import com.bignerdranch.android.htiapp.network.NetworkRepository
 import com.bignerdranch.android.htiapp.network.entities.Marker
 import com.bignerdranch.android.htiapp.utils.BitmapUtil
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.CancelableCallback
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
@@ -35,6 +39,7 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
     lateinit var networkRepository: NetworkRepository
 
     private val compositeDisposable = CompositeDisposable()
+    lateinit var binding: FragmentMapsBinding
 
     private var map: GoogleMap? = null
     private var lastPoint: GoogleMarker? = null
@@ -47,10 +52,12 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
         googleMap.setMinZoomPreference(12.0F)
         googleMap.setOnPoiClickListener(this@MapsFragment)
         googleMap.setOnMarkerClickListener(this)
+        googleMap.setOnCameraMoveListener { showCommentButton(false) }
         googleMap.setOnMapClickListener {
             val markerOptions = MarkerOptions()
             markerOptions.position(it)
             addMarker(markerOptions)
+            showCommentButton(false)
             showDialog()
         }
 
@@ -58,7 +65,17 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
     }
 
     override fun onMarkerClick(marker: GoogleMarker): Boolean {
-        map?.animateCamera(CameraUpdateFactory.newLatLng(LatLng(marker.position.latitude, marker.position.longitude)))
+        map?.animateCamera(
+            CameraUpdateFactory.newLatLng(LatLng(marker.position.latitude, marker.position.longitude)),
+            500, object : CancelableCallback{
+                override fun onCancel() { showCommentButton(false) }
+                override fun onFinish() { showCommentButton(true) }
+            }
+        )
+        binding.addCommentButton.setOnClickListener {
+            val intent = Intent(requireContext(), CommentActivity::class.java)
+            startActivity(intent)
+        }
         return true
     }
 
@@ -66,8 +83,9 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+    ): View {
+        binding = FragmentMapsBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -83,6 +101,10 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
     override fun onDestroy() {
         super.onDestroy()
         compositeDisposable.dispose()
+    }
+
+    private fun showCommentButton(show: Boolean) {
+        binding.addCommentButton.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     private fun showDialog() {
