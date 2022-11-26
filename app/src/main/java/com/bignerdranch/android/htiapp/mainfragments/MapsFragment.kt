@@ -74,6 +74,7 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
                 override fun onFinish() { showCommentButton(true) }
             }
         )
+
         binding.addCommentButton.setOnClickListener {
             val intent = Intent(requireContext(), CommentActivity::class.java)
             val bundle = Bundle()
@@ -81,7 +82,7 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
             intent.putExtra(ARG_BUNDLE, bundle)
             startActivity(intent)
         }
-        return true
+        return false
     }
 
     override fun onCreateView(

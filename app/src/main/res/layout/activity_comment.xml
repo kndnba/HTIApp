@@ -26,6 +26,10 @@
             android:layout_height="wrap_content"/>
     </FrameLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <ImageButton
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
@@ -147,6 +151,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cash_category"/>
 
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
