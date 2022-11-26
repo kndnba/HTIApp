@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/level"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:layout_gravity="center"
         android:background="@drawable/button"
         android:backgroundTint="#334155"
@@ -95,7 +95,7 @@
         android:textColor="#FFFFFF"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="333dp" />
+        tools:layout_editor_absoluteY="278dp" />
 
     <TextView
         android:layout_width="100dp"
@@ -119,21 +119,42 @@
         android:src="@drawable/ic_mini_marker"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="333dp" />
+        tools:layout_editor_absoluteY="278dp" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/button"
         android:backgroundTint="#334155"
         android:fontFamily="@font/inter_bold"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
         android:text=""
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/your_city_form" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button"
+        android:backgroundTint="#334155"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="center"
+        android:text="@string/exit"
+        android:textColor="#C50303"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
