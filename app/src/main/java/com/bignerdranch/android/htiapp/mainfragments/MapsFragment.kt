@@ -1,5 +1,7 @@
 package com.bignerdranch.android.htiapp.mainfragments
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import androidx.fragment.app.Fragment
 
 import android.os.Bundle
@@ -10,7 +12,6 @@ import android.widget.Toast
 import com.bignerdranch.android.htiapp.R
 import com.bignerdranch.android.htiapp.network.NetworkRepository
 import com.bignerdranch.android.htiapp.network.entities.Marker
-import com.bignerdranch.android.htiapp.network.entities.MarkersResponse
 import com.bignerdranch.android.htiapp.utils.BitmapUtil
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -25,6 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
+import com.google.android.gms.maps.model.Marker as GoogleMarker
 
 @AndroidEntryPoint
 class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
@@ -35,22 +37,20 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
     private val compositeDisposable = CompositeDisposable()
 
     private var map: GoogleMap? = null
+    private var lastPoint: GoogleMarker? = null
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
         val yakutsk = LatLng(62.03, 129.67)
 
-        googleMap.addMarker(MarkerOptions()
-            .position(yakutsk).title("Marker in Yakutsk")
-            .snippet("It's cold!")
-            .icon(BitmapUtil.bitmapDestructorFromDrawable(requireContext(), R.drawable.marker)))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(yakutsk))
         googleMap.setMinZoomPreference(12.0F)
         googleMap.setOnPoiClickListener(this@MapsFragment)
         googleMap.setOnMapClickListener {
             val markerOptions = MarkerOptions()
             markerOptions.position(it)
-            googleMap.animateCamera(CameraUpdateFactory.newLatLng(it))
+            addMarker(markerOptions)
+            showDialog()
         }
 
         getMarkers()
@@ -79,6 +79,32 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
         compositeDisposable.dispose()
     }
 
+    private fun showDialog() {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        val dialog = dialogBuilder.setMessage("Добавить точку?")
+            .setTitle("Добавление точки")
+            .setCancelable(false)
+            .setPositiveButton("ДА!") { _, _ -> saveMarker() }
+            .setNegativeButton("Нет") { dialog, _ ->
+                lastPoint?.remove()
+                dialog.cancel()
+            }
+            .create()
+
+        dialog.show()
+    }
+
+    private fun saveMarker() {
+        lastPoint?.let {
+            compositeDisposable.add(
+                networkRepository.addMarker(it)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
+            )
+        }
+    }
+
     private fun getMarkers() {
         compositeDisposable.add(
             networkRepository.getMarkers()
@@ -103,7 +129,10 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
                     val latitude = marker.xCoordinate?.toDouble() ?: 0.0
                     val longitude = marker.yCoordinate?.toDouble() ?: 0.0
                     val position = LatLng(latitude, longitude)
-                    val options = MarkerOptions().apply { this.position(position) }
+                    val options = MarkerOptions().apply {
+                        this.position(position)
+                        this.title(marker.comments)
+                    }
                     addMarker(options)
                 }
             }
@@ -112,6 +141,6 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
 
     private fun addMarker(markerOptions: MarkerOptions) {
         markerOptions.icon(BitmapUtil.bitmapDestructorFromDrawable(requireContext(), R.drawable.marker))
-        map?.addMarker(markerOptions)
+        lastPoint = map?.addMarker(markerOptions)
     }
 }
