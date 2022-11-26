@@ -34,4 +34,8 @@
     <string name="my_achievements">Мои достижения</string>
     <string name="add_avatar">Добавить аватарку</string>
     <string name="level">2 уровень</string>
+    <string name="aytal">Айтал Андреев</string>
+    <string name="aytal_phone_number">+79142260516</string>
+    <string name="task_of_the_day">Задача дня</string>
+    <string name="tasks">Задания</string>
 </resources>
