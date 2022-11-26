@@ -29,7 +29,7 @@ import javax.inject.Inject
 import com.google.android.gms.maps.model.Marker as GoogleMarker
 
 @AndroidEntryPoint
-class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
+class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarkerClickListener {
 
     @Inject
     lateinit var networkRepository: NetworkRepository
@@ -46,6 +46,7 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(yakutsk))
         googleMap.setMinZoomPreference(12.0F)
         googleMap.setOnPoiClickListener(this@MapsFragment)
+        googleMap.setOnMarkerClickListener(this)
         googleMap.setOnMapClickListener {
             val markerOptions = MarkerOptions()
             markerOptions.position(it)
@@ -54,6 +55,11 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
         }
 
         getMarkers()
+    }
+
+    override fun onMarkerClick(marker: GoogleMarker): Boolean {
+        map?.animateCamera(CameraUpdateFactory.newLatLng(LatLng(marker.position.latitude, marker.position.longitude)))
+        return true
     }
 
     override fun onCreateView(
@@ -100,6 +106,7 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
                 networkRepository.addMarker(it)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
+                    .doOnError { showToast("Failed to save marker") }
                     .subscribe()
             )
         }
