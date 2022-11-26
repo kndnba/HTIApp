@@ -1,15 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainfragments.ProfileFragment">
+    tools:context=".mainfragments.ProfileFragment"
+    android:background="#1E293B">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/level"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:layout_gravity="center"
-        android:text="profile here"
-         />
+        android:background="@drawable/button"
+        android:backgroundTint="#334155"
+        android:fontFamily="@font/inter_bold"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="59dp"
+        android:elevation="1dp"
+        android:fontFamily="@font/inter_regular"
+        android:gravity="center"
+        android:text="@string/aytal"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/level"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView2"
+        android:layout_width="59dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#334155"
+        android:elevation="2dp"
+        android:src="@drawable/cowboy"
+        tools:layout_editor_absoluteX="176dp"
+        tools:layout_editor_absoluteY="112dp"
+        tools:ignore="MissingConstraints" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageView"
+        android:layout_width="126dp"
+        android:layout_height="112dp"
+        android:backgroundTint="#334155"
+        android:elevation="1dp"
+        android:src="@drawable/ic_baseline_lens_24"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="82dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/your_city_form"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button"
+        android:backgroundTint="#334155"
+        android:fontFamily="@font/inter_bold"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/level" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="59dp"
+        android:elevation="1dp"
+        android:fontFamily="@font/inter_bold"
+        android:gravity="center"
+        android:text="@string/aytal"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/level"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <TextView
+        android:id="@+id/your_city_text"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="Ваш город"
+        android:textColor="#FFFFFF"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="333dp" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="219dp"
+        android:fontFamily="@font/inter_regular"
+        android:text="Якутск"
+        android:textColor="#94A3B8"
+        app:layout_constraintEnd_toEndOf="@+id/your_city_form"
+        app:layout_constraintStart_toStartOf="@+id/your_city_form"
+        app:layout_constraintTop_toBottomOf="@+id/your_city_text"
+        tools:ignore="MissingConstraints" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="53dp"
+        android:layout_height="42dp"
+        android:background="#1E293B"
+        android:backgroundTint="#334155"
+        android:elevation="1dp"
+        android:src="@drawable/ic_mini_marker"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="333dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button"
+        android:backgroundTint="#334155"
+        android:fontFamily="@font/inter_bold"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/your_city_form" />
+</androidx.constraintlayout.widget.ConstraintLayout>

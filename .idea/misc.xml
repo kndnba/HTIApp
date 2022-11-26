@@ -17,9 +17,12 @@
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.153" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/ic_iconnn.xml" value="0.153" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.153" />
+        <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/ic_logo.xml" value="0.153" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/ic_marker.xml" value="0.153" />
+        <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/ic_mini_marker.xml" value="0.153" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.153" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/ic_profile.xml" value="0.153" />
+        <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/marker.xml" value="0.153" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/drawable/textfield.xml" value="0.153" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -37,6 +40,7 @@
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/layout/fragment_login.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/layout/fragment_maps.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/layout/fragment_second.xml" value="0.24864130434782608" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/layout/fragment_third.xml" value="0.24864130434782608" />
         <entry key="..\:/Users/Mvideo/AndroidStudioProjects/HTIApp/app/src/main/res/menu-v26/nav_menu.xml" value="0.25416666666666665" />
