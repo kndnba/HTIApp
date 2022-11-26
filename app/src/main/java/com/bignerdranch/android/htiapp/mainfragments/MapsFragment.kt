@@ -140,7 +140,7 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener {
     }
 
     private fun addMarker(markerOptions: MarkerOptions) {
-        markerOptions.icon(BitmapUtil.bitmapDestructorFromDrawable(requireContext(), R.drawable.marker))
+        markerOptions.icon(BitmapUtil.bitmapDestructorFromDrawable(requireContext(), R.drawable.ic_marker))
         lastPoint = map?.addMarker(markerOptions)
     }
 }
