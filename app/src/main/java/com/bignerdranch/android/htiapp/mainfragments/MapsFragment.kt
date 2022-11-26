@@ -45,6 +45,7 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
 
     private var map: GoogleMap? = null
     private var lastPoint: GoogleMarker? = null
+    private val localMarkers: MutableList<GoogleMarker?> = mutableListOf()
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
@@ -62,8 +63,6 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
             showCommentButton(false)
             showDialog()
         }
-
-        getMarkers()
     }
 
     override fun onMarkerClick(marker: GoogleMarker): Boolean {
@@ -82,7 +81,15 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
             intent.putExtra(ARG_BUNDLE, bundle)
             startActivity(intent)
         }
-        return false
+
+        marker.showInfoWindow()
+
+        return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getMarkers()
     }
 
     override fun onCreateView(
@@ -164,6 +171,13 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
                     val latitude = marker.xCoordinate?.toDouble() ?: 0.0
                     val longitude = marker.yCoordinate?.toDouble() ?: 0.0
 
+                    for (googleMarker in localMarkers) {
+                        if (googleMarker?.position?.latitude == latitude &&
+                                googleMarker.position.longitude == longitude) {
+                            googleMarker.remove()
+                        }
+                    }
+
                     val position = LatLng(latitude, longitude)
                     val options = MarkerOptions().apply {
                         this.position(position)
@@ -178,5 +192,6 @@ class MapsFragment : Fragment(), GoogleMap.OnPoiClickListener, GoogleMap.OnMarke
     private fun addMarker(markerOptions: MarkerOptions) {
         markerOptions.icon(BitmapUtil.bitmapDestructorFromDrawable(requireContext(), R.drawable.ic_marker))
         lastPoint = map?.addMarker(markerOptions)
+        localMarkers.add(lastPoint)
     }
 }
